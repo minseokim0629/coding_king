@@ -1,0 +1,65 @@
+html : 구조와 데이터를 담음. css: 어떻게 보여줄지 디자인 담당
+html과 css는 프로그래밍 언어가 아니다.
+
+javascript
+-웹페이지에 "기능"을 부여하는 "프로그래밍 언어"
+
+프로그램
+-> 입력값을 넣었을때 특정한 동작을 수행하여 특정한 결과값을 도출
+
+프로그래밍
+-> 입력값을 넣었을 때, 원하는 동작을 수행하여 원하는 결과값이 나오도록 하는 문제 해결 과정
+-> 불편함을 느끼고, 이 불편함을 해결해 나가는 과정
+
+자바스크립트를 사용하는 방법
+1) HTML 내부에 선언
+-script 태그 내부에 자바스크립트 삽입!
+
+2) 외부 파일에 선언
+-script 태그의 src 속성 사용
+<script src="4th.js"></script>
+
+
+
+let은 변수를 선언하는 용도이다.
+ex) let fir = 23;
+
+javascript에서 객체를 사용하는 법
+
+let obj = {
+   name : "JWK", (이렇게 변수는 쉼표로 구분)
+   studentNum : 12201677,
+   getStudentNum: function(){ -> 함수 선언하기
+       return this.studentNum;
+   },
+};
+
+let fir = prompt("fir");
+let sec=prompt("sec");
+-> 둘다 문자열로 입력되어서 alert(fir+sec);으로 하면 2345같은 값이 출력됨.
+여기서 입력된 값을 정수로 바꾸는 법 : fir = parseInt(fir);
+
+
+== 이면 값이 같으면 데이터 타입이 다르더라도 참 반환
+=== 이면 값과 데이터 타입까지 같아야 참 반환
+let add = function (fir, sec){}과 function add(fir, sec){}과 다르다.
+
+DOM(Document Object Model)
+HTML의 요소들을 자바스크립트에서 접근하고, 수정할 수 있도록 함
+-> HTML의 정보를 자바스크립트에서 처리
+-> 웹 페이지 그 자체에 기능을 부여할 수 있음.
+
+document.writeln(dom.textContent); 
+이렇게 안써주고 그냥 dom으로 쓰면 이상한 값이 출력됨. dom.textContent라고 써줘야함.
+
+head.textContent = "Hello World"; 로 써주면 원래 h1 태그에 작성되었던 내용이 바뀌어
+Hello World로 바뀜.
+
+이벤트 핸들러?
+특정한 동작을 했을 때 작동하도록...웹 페이지와의 상호작용
+
+onmouseover : 마우스를 올리면 해당 이벤트가 실행됨.
+
+
+노마드코더
+생활코딩
