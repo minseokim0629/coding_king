@@ -8,26 +8,6 @@ let app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 //bodyParser : 데이터가 post 타입으로 들어왔을 때 데이터를 파싱한다.
 
-app.get("/view/:filenme", function (req, res) {
-  //get이라는 method로 데이터 조회
-  let filename = req.params.filename;
-  fs.readFile(`./data/${filename}`, "utf8", function (err, data) {
-    if (err) {
-      console.log(err);
-      res.json({
-        success: false, //실패했다고 웹 브라우저에 알려준다
-      }); //rest api 때 데이터를 주고받는 템플릿, js와 문법이 비슷
-      return;
-    }
-    res.json({
-      filename: filename,
-      content: data,
-    });
-  });
-});
-
-app.listen(3001);
-
 app.post("/create", function (req, res) {
   //post method로 파일 생성
   //보내는 쪽 이름(html)과 받는 쪽 이름이 동일해야 한다.
@@ -44,6 +24,24 @@ app.post("/create", function (req, res) {
     return;
     res.json({
       success: true,
+    });
+  });
+});
+
+app.get("/view/:filenme", function (req, res) {
+  //get이라는 method로 데이터 조회
+  let filename = req.params.filename;
+  fs.readFile(`./data/${filename}`, "utf8", function (err, data) {
+    if (err) {
+      console.log(err);
+      res.json({
+        success: false, //실패했다고 웹 브라우저에 알려준다
+      }); //rest api 때 데이터를 주고받는 템플릿, js와 문법이 비슷
+      return;
+    }
+    res.json({
+      filename: filename,
+      content: data,
     });
   });
 });
@@ -68,8 +66,8 @@ app.post("/update", function (req, res) {
         res.json({
           success: false,
         });
+        return;
       }
-      return;
       res.json({
         success: true,
       });
@@ -85,8 +83,8 @@ app.post("/delete", function (req, res) {
       res.json({
         success: false,
       });
+      return;
     }
-    return;
     res.json({
       success: true,
     });
@@ -106,6 +104,7 @@ app.get("/form", function (req, res) {
       <p>새 제목 : <input type="text" name="new_file" /></p>
       <p>내용 : <input type="text" name="content" /></p>
       <input type="submit" value="전송" />
+      </form>
       <h1>글 삭제</h1>
     <form action="/delete" method="post">
       <p>
